@@ -22,15 +22,13 @@
   --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #f1f5f9;
-    --card-bg: rgba(30, 41, 59, 0.8);
-    --card-border: rgba(71, 85, 105, 0.3);
-    --glass-bg: rgba(30, 41, 59, 0.7);
-    --glass-border: rgba(71, 85, 105, 0.2);
-  }
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card-bg: rgba(30, 41, 59, 0.8);
+  --card-border: rgba(71, 85, 105, 0.3);
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(71, 85, 105, 0.2);
 }
 
 * {
