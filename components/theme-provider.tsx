@@ -15,21 +15,34 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('system');
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
 
+  // Run only on client after mount
   useEffect(() => {
+    setMounted(true);
+
     // Load saved theme from localStorage
     const saved = localStorage.getItem('theme') as Theme | null;
     if (saved) {
       setThemeState(saved);
+    } else {
+      // Default to system preference
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setResolvedTheme(systemDark ? 'dark' : 'light');
+      if (systemDark) {
+        document.documentElement.classList.add('dark');
+      }
     }
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
+
     // Apply theme
     const root = document.documentElement;
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
     const resolved = theme === 'system' ? (systemDark ? 'dark' : 'light') : theme;
+
     setResolvedTheme(resolved);
 
     if (resolved === 'dark') {
@@ -37,16 +50,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     } else {
       root.classList.remove('dark');
     }
-  }, [theme]);
+  }, [theme, mounted]);
 
   useEffect(() => {
-    // Listen for system theme changes
-    if (theme !== 'system') return;
+    if (!mounted || theme !== 'system') return;
 
+    // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => {
-      setResolvedTheme(mediaQuery.matches ? 'dark' : 'light');
-      if (mediaQuery.matches) {
+    const handleChange = (e: MediaQueryListEvent) => {
+      setResolvedTheme(e.matches ? 'dark' : 'light');
+      if (e.matches) {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
@@ -55,7 +68,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
+  }, [theme, mounted]);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
