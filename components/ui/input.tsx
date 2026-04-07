@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes, useId } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -11,22 +11,28 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, hint, prefix, suffix, className = '', ...props }, ref) => {
+  ({ label, error, hint, prefix, suffix, className = '', id, ...props }, ref) => {
+    const generatedId = useId();
+    const inputId = id || generatedId;
+    const errorId = `${inputId}-error`;
+    const hintId = `${inputId}-hint`;
+
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+          <label htmlFor={inputId} className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
             {label}
           </label>
         )}
         <div className="relative">
           {prefix && (
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 font-medium">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 font-medium" aria-hidden="true">
               {prefix}
             </span>
           )}
           <input
             ref={ref}
+            id={inputId}
             className={`
               w-full px-4 py-2.5 rounded-xl border-2 transition-all duration-200
               ${prefix ? 'pl-8' : ''}
@@ -42,24 +48,26 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               hover:border-slate-300 dark:hover:border-slate-600
               ${className}
             `}
+            aria-invalid={error ? 'true' : undefined}
+            aria-describedby={error ? errorId : hint ? hintId : undefined}
             {...props}
           />
           {suffix && (
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 font-medium">
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 font-medium" aria-hidden="true">
               {suffix}
             </span>
           )}
         </div>
         {error && (
-          <p className="mt-1.5 text-sm text-red-500 flex items-center gap-1">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <p id={errorId} className="mt-1.5 text-sm text-red-500 flex items-center gap-1" role="alert">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             {error}
           </p>
         )}
         {hint && !error && (
-          <p className="mt-1.5 text-sm text-slate-500 dark:text-slate-400">{hint}</p>
+          <p id={hintId} className="mt-1.5 text-sm text-slate-500 dark:text-slate-400">{hint}</p>
         )}
       </div>
     );

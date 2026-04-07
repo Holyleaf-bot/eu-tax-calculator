@@ -3,9 +3,41 @@
 import { useParams, useRouter } from 'next/navigation';
 import { getCountry, countryList, CountryTaxRules } from '@/lib/countries';
 import { VatCalculator, IncomeCalculator, CorporateCalculator, SocialCalculator } from '@/components/calculator';
-import { Select } from '@/components/ui';
+import { Select, Tooltip } from '@/components/ui';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { notFound } from 'next/navigation';
+
+// Tax term explanations
+const taxTerms: Record<string, string> = {
+  'progressive tax': 'Tax rate increases as income increases. Higher portions of your income are taxed at higher rates.',
+  'personal allowance': 'Amount you can earn before paying any income tax. Also called "tax-free allowance" or "basic allowance".',
+  'deductions': 'Amounts subtracted from your taxable income, reducing the amount you pay tax on.',
+  'social contributions': 'Mandatory payments for pension, health insurance, and unemployment benefits. Paid by both employer and employee.',
+  'brackets': 'Income ranges where different tax rates apply. For example, income in the first bracket may be taxed at 0%, while higher brackets have higher rates.',
+  'VAT': 'Value Added Tax - a consumption tax added to most goods and services. The final consumer pays the tax.',
+  'corporate tax': 'Tax on company profits. The rate may be lower for small businesses in some countries.',
+  'standard rate': 'The default VAT rate applied to most goods and services.',
+  'reduced rate': 'Lower VAT rates for specific items like food, books, or medicine.',
+  'effective tax rate': 'The actual percentage of your income paid in taxes, calculated as total taxes divided by gross income.',
+  'taxable income': 'Your income after subtracting all allowances and deductions. This is the amount actually taxed.',
+  'net salary': 'Your take-home pay after all taxes and contributions are deducted from gross salary.',
+  'gross salary': 'Total salary before any deductions are taken.',
+  'employer contributions': 'Additional social contributions paid by the employer on top of your salary.',
+  'employee contributions': 'Social contributions deducted directly from your salary.',
+};
+
+function TermWithTooltip({ term, children }: { term: string; children: React.ReactNode }) {
+  const explanation = taxTerms[term.toLowerCase()];
+  if (!explanation) return <>{children}</>;
+
+  return (
+    <Tooltip content={explanation}>
+      <span className="underline decoration-dotted decoration-slate-400 underline-offset-2 cursor-help">
+        {children}
+      </span>
+    </Tooltip>
+  );
+}
 
 export default function CountryPage() {
   const params = useParams();
@@ -179,7 +211,7 @@ export default function CountryPage() {
           <div>
             <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2">
               <span className="w-2 h-2 bg-red-500 rounded-full" />
-              Income Tax Brackets
+              <TermWithTooltip term="brackets">Income Tax Brackets</TermWithTooltip>
             </h3>
             <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
               <table className="min-w-full text-sm">
@@ -211,7 +243,7 @@ export default function CountryPage() {
           <div>
             <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2">
               <span className="w-2 h-2 bg-blue-500 rounded-full" />
-              VAT Rates
+              <TermWithTooltip term="VAT">VAT Rates</TermWithTooltip>
             </h3>
             <div className="flex flex-wrap gap-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-sm font-medium">

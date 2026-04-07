@@ -1,7 +1,7 @@
 'use client';
 
 import { IncomeTaxResult } from '@/lib/countries/types';
-import { Card, CardBody } from '@/components/ui';
+import { Card, CardBody, Tooltip as TooltipUI } from '@/components/ui';
 import { formatCurrency, formatPercent, formatNumber } from '@/lib/utils/format';
 import {
   PieChart,
@@ -16,6 +16,17 @@ import {
   YAxis,
   CartesianGrid,
 } from 'recharts';
+
+// Tax term tooltips
+const taxTooltips: Record<string, string> = {
+  'Gross Salary': 'Total salary before any deductions are taken.',
+  'Net Salary': 'Your take-home pay after all taxes and contributions are deducted.',
+  'Income Tax': 'Tax on your earnings, calculated using progressive brackets.',
+  'Social Contrib.': 'Mandatory payments for pension, health insurance, and unemployment benefits.',
+  'Effective Tax Rate': 'The actual percentage of income paid in taxes (total taxes ÷ gross income).',
+  'Taxable Income': 'Income after subtracting allowances and deductions.',
+  'Personal Allowance': 'Amount you can earn tax-free.',
+};
 
 interface IncomeResultDisplayProps {
   result: IncomeTaxResult;
@@ -64,28 +75,36 @@ export function IncomeResultDisplay({
         {/* Summary Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-            <p className="text-sm text-gray-500 dark:text-gray-400">Gross Salary</p>
+            <TooltipUI content={taxTooltips['Gross Salary'] || ''}>
+              <p className="text-sm text-gray-500 dark:text-gray-400 cursor-help underline decoration-dotted underline-offset-2">Gross Salary</p>
+            </TooltipUI>
             <p className="text-xl font-bold text-gray-900 dark:text-white">
               {formatCurrency(grossSalary, currency)}
             </p>
           </div>
 
           <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
-            <p className="text-sm text-red-600 dark:text-red-400">Income Tax</p>
+            <TooltipUI content={taxTooltips['Income Tax'] || ''}>
+              <p className="text-sm text-red-600 dark:text-red-400 cursor-help underline decoration-dotted underline-offset-2">Income Tax</p>
+            </TooltipUI>
             <p className="text-xl font-bold text-red-600 dark:text-red-400">
               {formatCurrency(incomeTax, currency)}
             </p>
           </div>
 
           <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
-            <p className="text-sm text-blue-600 dark:text-blue-400">Social Contrib.</p>
+            <TooltipUI content={taxTooltips['Social Contrib.'] || ''}>
+              <p className="text-sm text-blue-600 dark:text-blue-400 cursor-help underline decoration-dotted underline-offset-2">Social Contrib.</p>
+            </TooltipUI>
             <p className="text-xl font-bold text-blue-600 dark:text-blue-400">
               {formatCurrency(socialContributionsEmployee, currency)}
             </p>
           </div>
 
           <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
-            <p className="text-sm text-green-600 dark:text-green-400">Net Salary</p>
+            <TooltipUI content={taxTooltips['Net Salary'] || ''}>
+              <p className="text-sm text-green-600 dark:text-green-400 cursor-help underline decoration-dotted underline-offset-2">Net Salary</p>
+            </TooltipUI>
             <p className="text-xl font-bold text-green-600 dark:text-green-400">
               {formatCurrency(netSalary, currency)}
             </p>
@@ -94,7 +113,9 @@ export function IncomeResultDisplay({
 
         {/* Effective Tax Rate */}
         <div className="text-center mb-6">
-          <span className="text-sm text-gray-500 dark:text-gray-400">Effective Tax Rate: </span>
+          <TooltipUI content={taxTooltips['Effective Tax Rate'] || ''}>
+            <span className="text-sm text-gray-500 dark:text-gray-400 cursor-help underline decoration-dotted underline-offset-2">Effective Tax Rate: </span>
+          </TooltipUI>
           <span className="text-2xl font-bold text-gray-900 dark:text-white">
             {formatPercent(effectiveTaxRate)}
           </span>

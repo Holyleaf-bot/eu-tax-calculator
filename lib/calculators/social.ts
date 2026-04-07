@@ -57,6 +57,7 @@ export function calculateSocialContributionsFull(
 
 function applyCap(amount: number, cap: number | undefined, salary: number): number {
   if (cap === undefined) return amount;
+  if (salary === 0) return 0; // Handle zero salary case
 
   // Cap applies to the contribution base, not the contribution itself
   // If salary exceeds cap, use cap as the base

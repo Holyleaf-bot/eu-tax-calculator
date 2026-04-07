@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { countryList, CountryTaxRules } from '@/lib/countries';
 import { Card, CardBody } from '@/components/ui';
+import { StructuredData } from '@/components/structured-data';
 
 export default function HomePage() {
   const router = useRouter();
@@ -19,8 +20,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Hero Section */}
+    <>
+      <StructuredData />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Hero Section */}
       <div className="text-center mb-16 animate-fade-in">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
           <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -159,5 +162,6 @@ export default function HomePage() {
         </p>
       </div>
     </div>
+    </>
   );
 }

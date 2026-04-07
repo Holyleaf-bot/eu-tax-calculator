@@ -20,6 +20,7 @@ export function VatCalculator({ vatRules, currency, currencySymbol }: VatCalcula
   const [result, setResult] = useState<ReturnType<typeof calculateVat> | null>(null);
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState(false);
+  const [showExample, setShowExample] = useState(false);
 
   const handleCalculate = () => {
     // Validation
@@ -126,6 +127,28 @@ export function VatCalculator({ vatRules, currency, currencySymbol }: VatCalcula
           <Button onClick={handleCalculate} className="w-full" loading={loading}>
             {loading ? 'Calculating...' : 'Calculate VAT'}
           </Button>
+
+          {!result && !showExample && (
+            <button
+              onClick={() => {
+                setAmount('1000');
+                setRateType('standard');
+                setShowExample(true);
+                setTimeout(() => {
+                  const vatResult = calculateVat({
+                    amount: 1000,
+                    vatRules,
+                    rateType: 'standard',
+                    mode: 'add',
+                  });
+                  setResult(vatResult);
+                }, 100);
+              }}
+              className="w-full text-sm text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              ✨ Show example calculation
+            </button>
+          )}
 
           {result && <VatResultDisplay result={result} currency={currency} mode={mode} />}
         </div>
