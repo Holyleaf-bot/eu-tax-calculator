@@ -39,7 +39,7 @@ interface TabsListProps {
 export function TabsList({ children, className = '' }: TabsListProps) {
   return (
     <div
-      className={`flex space-x-1 border-b border-gray-200 dark:border-gray-700 ${className}`}
+      className={`flex space-x-1 border-b border-gray-200 dark:border-gray-700 overflow-x-auto scrollbar-hide ${className}`}
       role="tablist"
     >
       {children}

@@ -193,6 +193,16 @@ body {
   background: rgba(148, 163, 184, 0.5);
 }
 
+/* Hide scrollbar but allow scrolling (for mobile tabs) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
