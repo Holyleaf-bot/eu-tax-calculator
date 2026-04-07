@@ -95,7 +95,7 @@ export default function HomePage() {
               <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-slate-100/80 dark:from-slate-700/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 text-xs font-medium text-slate-600 dark:text-slate-300">
                 <span>VAT {(country.vat.standardRate * 100).toFixed(0)}%</span>
                 <span className="w-1 h-1 bg-slate-400 rounded-full" />
-                <span>Tax {Math.max(...country.incomeTax.brackets.map(b => b.rate)) * 100}%</span>
+                <span>Tax {Math.round(Math.max(...country.incomeTax.brackets.map(b => b.rate)) * 100)}%</span>
               </div>
             </button>
           ))}
