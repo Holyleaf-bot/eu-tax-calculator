@@ -19,22 +19,24 @@ const se: CountryTaxRules = {
   },
 
   incomeTax: {
-    // 2025 Swedish tax brackets (annual)
+    // 2025 Swedish tax - municipal tax (~32%) + state tax
+    // Municipal tax varies by municipality, average ~32%
+    // State tax: 20% above 598,300 kr, additional 5% above 744,200 kr
     brackets: [
-      { min: 0, max: 605500, rate: 0.20 },
-      { min: 605500, max: 753500, rate: 0.50 },
-      { min: 753500, max: null, rate: 0.55 },
+      { min: 0, max: 598300, rate: 0.32 }, // Municipal only (average)
+      { min: 598300, max: 744200, rate: 0.52 }, // Municipal + 20% state tax
+      { min: 744200, max: null, rate: 0.57 }, // Municipal + 25% state tax
     ],
     personalAllowance: 0,
     deductions: [
       {
-        name: 'Basic allowance',
+        name: 'Basic allowance (grundavdrag)',
         type: 'fixed',
-        value: 46500,
-        description: 'Basic tax allowance',
+        value: 50000, // Approximate, varies based on income
+        description: 'Basic tax allowance varies by income level',
       },
       {
-        name: 'Work tax credit',
+        name: 'Work tax credit (jobbskatteavdrag)',
         type: 'percentage',
         value: 0.05,
         description: 'Tax credit for working individuals',
@@ -53,19 +55,19 @@ const se: CountryTaxRules = {
 
   socialContributions: {
     employee: {
-      pension: 0.07,
-      health: 0,
-      unemployment: 0.029,
+      pension: 0.07, // Public pension (avgift)
+      health: 0, // Included in municipal tax
+      unemployment: 0.029, // A-kasseavgift (voluntary)
       other: 0,
     },
     employer: {
-      pension: 0.0472,
-      health: 0.0414,
-      unemployment: 0.0264,
-      other: 0.103,
+      pension: 0.0472, // Avgift för allmän löneavgift
+      health: 0.0414, // Sjukförsäkring
+      unemployment: 0.0264, // Arbetslöshetsförsäkring
+      other: 0.103, // Föräldraförsäkring, m.m.
     },
     caps: {
-      pension: 523200, // 2025 annual ceiling
+      pension: 523200, // 2025 annual ceiling (8.07 × price base amount)
     },
   },
 };
