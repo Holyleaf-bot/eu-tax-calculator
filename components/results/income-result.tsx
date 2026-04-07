@@ -121,6 +121,30 @@ export function IncomeResultDisplay({
           </span>
         </div>
 
+        {/* Monthly/Weekly Breakdown */}
+        <div className="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800/50 dark:to-slate-700/50 rounded-xl p-4 mb-6">
+          <h4 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
+            Period Breakdown
+          </h4>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="text-center">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Annual</p>
+              <p className="text-lg font-bold text-slate-900 dark:text-white">{formatCurrency(grossSalary, currency)}</p>
+              <p className="text-sm text-green-600 dark:text-green-400">{formatCurrency(netSalary, currency)} net</p>
+            </div>
+            <div className="text-center">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Monthly</p>
+              <p className="text-lg font-bold text-slate-900 dark:text-white">{formatCurrency(grossSalary / 12, currency)}</p>
+              <p className="text-sm text-green-600 dark:text-green-400">{formatCurrency(netSalary / 12, currency)} net</p>
+            </div>
+            <div className="text-center">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Weekly</p>
+              <p className="text-lg font-bold text-slate-900 dark:text-white">{formatCurrency(grossSalary / 52, currency)}</p>
+              <p className="text-sm text-green-600 dark:text-green-400">{formatCurrency(netSalary / 52, currency)} net</p>
+            </div>
+          </div>
+        </div>
+
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           {/* Pie Chart */}

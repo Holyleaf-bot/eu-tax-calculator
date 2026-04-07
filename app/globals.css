@@ -279,3 +279,82 @@ body {
   background: rgba(59, 130, 246, 0.2);
   color: inherit;
 }
+
+/* Print styles */
+@media print {
+  /* Hide interactive elements */
+  header,
+  footer,
+  nav,
+  button,
+  .no-print,
+  [data-no-print] {
+    display: none !important;
+  }
+
+  /* Show print-only elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Reset backgrounds for printing */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .glass-card,
+  .bg-white\/70,
+  .bg-slate-800\/70,
+  [class*="bg-gradient"] {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+
+  /* Ensure text is visible */
+  .text-white,
+  .text-slate-900,
+  [class*="dark:text"] {
+    color: black !important;
+  }
+
+  .text-blue-600,
+  .text-red-600,
+  .text-green-600,
+  [class*="text-"] {
+    color: inherit !important;
+  }
+
+  /* Expand full width */
+  .max-w-7xl,
+  .max-w-4xl,
+  .max-w-5xl {
+    max-width: 100% !important;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+
+  /* Charts - make them grayscale */
+  svg {
+    filter: grayscale(100%);
+  }
+
+  /* Links show URL */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}

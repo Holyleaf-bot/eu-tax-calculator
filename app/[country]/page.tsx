@@ -5,6 +5,8 @@ import { getCountry, countryList, CountryTaxRules } from '@/lib/countries';
 import { VatCalculator, IncomeCalculator, CorporateCalculator, SocialCalculator } from '@/components/calculator';
 import { Select, Tooltip } from '@/components/ui';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { getTaxAuthority } from '@/lib/data/tax-authorities';
+import { averageSalaries } from '@/lib/data/average-salaries';
 import { notFound } from 'next/navigation';
 
 // Tax term explanations
@@ -291,6 +293,70 @@ export default function CountryPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Average Salary Context */}
+          {averageSalaries[country.code] && (
+            <div>
+              <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 bg-amber-500 rounded-full" />
+                Salary Context
+              </h3>
+              <div className="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/30">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Average Gross Salary</p>
+                    <p className="text-xl font-bold text-slate-900 dark:text-white">
+                      €{averageSalaries[country.code].toLocaleString()}/year
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Monthly</p>
+                    <p className="text-lg font-semibold text-slate-700 dark:text-slate-300">
+                      €{Math.round(averageSalaries[country.code] / 12).toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-400 dark:text-slate-500 mt-2">
+                  Source: Eurostat & national statistics (2024 estimates)
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Official Tax Authority */}
+          {getTaxAuthority(country.code) && (
+            <div>
+              <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 bg-blue-500 rounded-full" />
+                Official Sources
+              </h3>
+              <a
+                href={getTaxAuthority(country.code)!.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-4 rounded-lg bg-slate-50 dark:bg-slate-800/30 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <p className="font-medium text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                    {getTaxAuthority(country.code)!.name}
+                  </p>
+                  {getTaxAuthority(country.code)!.nameLocal && (
+                    <p className="text-sm text-slate-500 dark:text-slate-400">
+                      {getTaxAuthority(country.code)!.nameLocal}
+                    </p>
+                  )}
+                </div>
+                <svg className="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
             </div>
           )}
         </div>

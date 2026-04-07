@@ -151,6 +151,57 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Quick Actions */}
+      <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <a href="/compare" className="glass-card p-6 group hover:shadow-xl hover:shadow-blue-500/10 transition-all">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/25 group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                Compare Countries
+              </h3>
+              <p className="text-slate-600 dark:text-slate-400 text-sm">
+                Select up to 3 countries and compare their tax rates, deductions, and net salary side by side.
+              </p>
+              <span className="inline-flex items-center gap-1 mt-3 text-sm font-medium text-green-600 dark:text-green-400 group-hover:gap-2 transition-all">
+                Start comparison
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/ranking" className="glass-card p-6 group hover:shadow-xl hover:shadow-blue-500/10 transition-all">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-lg shadow-amber-500/25 group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                Salary Ranking
+              </h3>
+              <p className="text-slate-600 dark:text-slate-400 text-sm">
+                Enter your salary and see where your net pay ranks across all 27 EU member states.
+              </p>
+              <span className="inline-flex items-center gap-1 mt-3 text-sm font-medium text-amber-600 dark:text-amber-400 group-hover:gap-2 transition-all">
+                View ranking
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+
       {/* Disclaimer */}
       <div className="glass-card p-6 text-center">
         <p className="text-sm text-slate-500 dark:text-slate-400 flex items-center justify-center gap-2">

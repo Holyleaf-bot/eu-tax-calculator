@@ -30,18 +30,24 @@ export function Header() {
               </div>
             </a>
 
-            <nav className="flex items-center gap-2" aria-label="Main navigation">
+            <nav className="flex items-center gap-1" aria-label="Main navigation">
               <a
-                href="/"
-                className="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                href="/compare"
+                className="hidden sm:block px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
-                Home
+                Compare
               </a>
               <a
-                href="#countries"
-                className="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                href="/ranking"
+                className="hidden sm:block px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
-                Countries
+                Ranking
+              </a>
+              <a
+                href="/"
+                className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                Home
               </a>
               <ThemeToggle />
             </nav>
