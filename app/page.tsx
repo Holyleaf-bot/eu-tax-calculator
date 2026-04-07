@@ -34,7 +34,7 @@ export default function HomePage() {
             EU Tax Calculator
           </span>
         </h1>
-        <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
+        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8">
           Calculate <span className="font-semibold text-slate-900 dark:text-white">VAT, income tax, corporate tax</span> and{' '}
           <span className="font-semibold text-slate-900 dark:text-white">social contributions</span> for all EU member states.
           Free, accurate, and easy to use.
@@ -68,7 +68,7 @@ export default function HomePage() {
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
             Select a Country
           </h2>
-          <span className="text-sm text-slate-500 dark:text-slate-400">
+          <span className="text-sm text-slate-500 dark:text-slate-300">
             {filteredCountries.length} countries
           </span>
         </div>
@@ -90,7 +90,7 @@ export default function HomePage() {
               <h3 className="relative font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {country.name}
               </h3>
-              <p className="relative text-sm text-slate-500 dark:text-slate-400 mt-1">
+              <p className="relative text-sm text-slate-500 dark:text-slate-300 mt-1">
                 {country.currency}
               </p>
 
@@ -116,7 +116,7 @@ export default function HomePage() {
           <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
             4 Tax Types
           </h3>
-          <p className="text-slate-600 dark:text-slate-400">
+          <p className="text-slate-600 dark:text-slate-300">
             Calculate VAT, income tax, corporate tax, and social contributions for individuals and businesses.
           </p>
         </div>
@@ -130,7 +130,7 @@ export default function HomePage() {
           <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
             All 27 Countries
           </h3>
-          <p className="text-slate-600 dark:text-slate-400">
+          <p className="text-slate-600 dark:text-slate-300">
             Complete coverage with country-specific tax rules, rates, and deductions.
           </p>
         </div>
@@ -145,7 +145,7 @@ export default function HomePage() {
           <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
             Visual Breakdowns
           </h3>
-          <p className="text-slate-600 dark:text-slate-400">
+          <p className="text-slate-600 dark:text-slate-300">
             Clear charts and detailed step-by-step calculations for every tax type.
           </p>
         </div>
@@ -164,7 +164,7 @@ export default function HomePage() {
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                 Compare Countries
               </h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm">
+              <p className="text-slate-600 dark:text-slate-300 text-sm">
                 Select up to 3 countries and compare their tax rates, deductions, and net salary side by side.
               </p>
               <span className="inline-flex items-center gap-1 mt-3 text-sm font-medium text-green-600 dark:text-green-400 group-hover:gap-2 transition-all">
@@ -188,7 +188,7 @@ export default function HomePage() {
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                 Salary Ranking
               </h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm">
+              <p className="text-slate-600 dark:text-slate-300 text-sm">
                 Enter your salary and see where your net pay ranks across all 27 EU member states.
               </p>
               <span className="inline-flex items-center gap-1 mt-3 text-sm font-medium text-amber-600 dark:text-amber-400 group-hover:gap-2 transition-all">
@@ -204,7 +204,7 @@ export default function HomePage() {
 
       {/* Disclaimer */}
       <div className="glass-card p-6 text-center">
-        <p className="text-sm text-slate-500 dark:text-slate-400 flex items-center justify-center gap-2">
+        <p className="text-sm text-slate-500 dark:text-slate-300 flex items-center justify-center gap-2">
           <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>

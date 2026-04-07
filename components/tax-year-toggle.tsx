@@ -51,7 +51,7 @@ export function TaxYearToggle() {
         className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all ${
           year === '2024'
             ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm'
-            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
         }`}
       >
         2024
@@ -61,7 +61,7 @@ export function TaxYearToggle() {
         className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all ${
           year === '2025'
             ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm'
-            : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
         }`}
       >
         2025

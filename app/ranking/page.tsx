@@ -47,7 +47,7 @@ export default function RankingPage() {
         <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
           Where Does Your Salary Go Furthest?
         </h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
           Enter your annual gross salary in EUR and see your net pay across all 27 EU member states.
         </p>
       </div>
@@ -90,7 +90,7 @@ export default function RankingPage() {
 
           {/* Sort Options */}
           <div className="flex items-center gap-4 mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-            <span className="text-sm text-slate-500 dark:text-slate-400">Sort by:</span>
+            <span className="text-sm text-slate-500 dark:text-slate-300">Sort by:</span>
             <div className="flex gap-2">
               {[
                 { value: 'net', label: 'Highest Net' },
@@ -167,14 +167,14 @@ export default function RankingPage() {
                     <span className="text-3xl">{item.country.flag}</span>
                     <div>
                       <p className="font-medium text-slate-900 dark:text-white">{item.country.name}</p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">{item.country.currency}</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-300">{item.country.currency}</p>
                     </div>
                   </div>
                   <div className="text-right">
                     <p className="text-lg font-bold text-slate-900 dark:text-white">
                       €{item.result.netSalary.toLocaleString()}
                     </p>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">
+                    <p className="text-sm text-slate-500 dark:text-slate-300">
                       {formatPercent(item.result.effectiveTaxRate)} tax
                     </p>
                   </div>
@@ -203,18 +203,18 @@ export default function RankingPage() {
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card variant="bordered">
           <CardBody className="text-center">
-            <p className="text-sm text-slate-500 dark:text-slate-400">Highest Net</p>
+            <p className="text-sm text-slate-500 dark:text-slate-300">Highest Net</p>
             <p className="text-2xl font-bold text-green-600 dark:text-green-400">
               {rankings[0] && `€${rankings[0].result.netSalary.toLocaleString()}`}
             </p>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-slate-500 dark:text-slate-300">
               {rankings[0]?.country.name}
             </p>
           </CardBody>
         </Card>
         <Card variant="bordered">
           <CardBody className="text-center">
-            <p className="text-sm text-slate-500 dark:text-slate-400">Lowest Net</p>
+            <p className="text-sm text-slate-500 dark:text-slate-300">Lowest Net</p>
             <p className="text-2xl font-bold text-red-600 dark:text-red-400">
               {rankings[rankings.length - 1] && `€${rankings[rankings.length - 1].result.netSalary.toLocaleString()}`}
             </p>
@@ -225,7 +225,7 @@ export default function RankingPage() {
         </Card>
         <Card variant="bordered">
           <CardBody className="text-center">
-            <p className="text-sm text-slate-500 dark:text-slate-400">Difference</p>
+            <p className="text-sm text-slate-500 dark:text-slate-300">Difference</p>
             <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               {rankings[0] && rankings[rankings.length - 1] &&
                 `€${(rankings[0].result.netSalary - rankings[rankings.length - 1].result.netSalary).toLocaleString()}`

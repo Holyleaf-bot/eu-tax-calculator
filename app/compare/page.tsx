@@ -64,7 +64,7 @@ export default function ComparePage() {
         <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
           Compare EU Tax Rates
         </h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
           Select up to 3 countries to compare their income tax, social contributions, and net salary side by side.
         </p>
       </div>
@@ -174,12 +174,12 @@ export default function ComparePage() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <th className="text-left py-3 px-4 font-medium text-slate-600 dark:text-slate-400">Country</th>
-                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-400">Gross Salary</th>
-                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-400">Income Tax</th>
-                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-400">Social Contrib.</th>
-                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-400">Net Salary</th>
-                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-400">Effective Rate</th>
+                    <th className="text-left py-3 px-4 font-medium text-slate-600 dark:text-slate-300">Country</th>
+                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-300">Gross Salary</th>
+                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-300">Income Tax</th>
+                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-300">Social Contrib.</th>
+                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-300">Net Salary</th>
+                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-300">Effective Rate</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -254,7 +254,7 @@ export default function ComparePage() {
 
             {/* Net Salary Ranking */}
             <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
-              <h3 className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-3">Net Salary Ranking</h3>
+              <h3 className="text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">Net Salary Ranking</h3>
               <div className="flex flex-wrap gap-2">
                 {comparisonData
                   .filter(Boolean)
@@ -285,7 +285,7 @@ export default function ComparePage() {
 
       {/* Quick Links */}
       <div className="mt-8 text-center">
-        <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">Or explore individual countries:</p>
+        <p className="text-sm text-slate-500 dark:text-slate-300 mb-3">Or explore individual countries:</p>
         <div className="flex flex-wrap justify-center gap-2">
           {['de', 'fr', 'nl', 'es', 'it'].map((code) => {
             const country = countryList.find((c: CountryTaxRules) => c.code === code);

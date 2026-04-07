@@ -91,12 +91,12 @@ export default function RootLayout({
             <footer className="mt-auto border-t border-slate-200/50 dark:border-slate-700/50 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                  <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-300">
                     <span>© {new Date().getFullYear()} EU Tax Calculator</span>
                     <span className="hidden sm:inline">•</span>
                     <span className="hidden sm:inline">Tax calculations for all 27 EU member states</span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-300">
                     <span className="flex items-center gap-1">
                       <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                       2025 Tax Rates

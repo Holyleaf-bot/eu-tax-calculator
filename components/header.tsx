@@ -24,7 +24,7 @@ export function Header() {
                 <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                   EU Tax Calculator
                 </span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">
+                <span className="text-xs text-slate-500 dark:text-slate-300 hidden sm:block">
                   27 Countries • 4 Tax Types
                 </span>
               </div>

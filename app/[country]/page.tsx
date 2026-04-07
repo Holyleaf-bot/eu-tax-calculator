@@ -84,7 +84,7 @@ export default function CountryPage() {
             <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
               {country.name}
             </h1>
-            <p className="text-slate-500 dark:text-slate-400 flex items-center gap-2">
+            <p className="text-slate-500 dark:text-slate-300 flex items-center gap-2">
               <span className="font-medium">{country.currency}</span>
               <span className="w-1 h-1 bg-slate-300 dark:bg-slate-600 rounded-full" />
               <span>{country.currencySymbol}</span>
@@ -101,7 +101,7 @@ export default function CountryPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
                 </svg>
               </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">VAT Rate</p>
+              <p className="text-sm text-slate-500 dark:text-slate-300">VAT Rate</p>
             </div>
             <p className="text-2xl font-bold text-slate-900 dark:text-white">
               {(country.vat.standardRate * 100).toFixed(0)}%
@@ -115,7 +115,7 @@ export default function CountryPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Income Tax</p>
+              <p className="text-sm text-slate-500 dark:text-slate-300">Income Tax</p>
             </div>
             <p className="text-2xl font-bold text-slate-900 dark:text-white">
               {(country.incomeTax.brackets[country.incomeTax.brackets.length - 1]?.rate * 100).toFixed(0)}%
@@ -130,7 +130,7 @@ export default function CountryPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Corporate Tax</p>
+              <p className="text-sm text-slate-500 dark:text-slate-300">Corporate Tax</p>
             </div>
             <p className="text-2xl font-bold text-slate-900 dark:text-white">
               {(country.corporateTax.standardRate * 100).toFixed(0)}%
@@ -144,7 +144,7 @@ export default function CountryPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Social Contrib.</p>
+              <p className="text-sm text-slate-500 dark:text-slate-300">Social Contrib.</p>
             </div>
             <p className="text-2xl font-bold text-slate-900 dark:text-white">
               {((country.socialContributions.employee.pension +
@@ -219,9 +219,9 @@ export default function CountryPage() {
               <table className="min-w-full text-sm">
                 <thead>
                   <tr className="bg-slate-50 dark:bg-slate-800/50">
-                    <th className="text-left py-3 px-4 font-medium text-slate-600 dark:text-slate-400">From</th>
-                    <th className="text-left py-3 px-4 font-medium text-slate-600 dark:text-slate-400">To</th>
-                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-400">Rate</th>
+                    <th className="text-left py-3 px-4 font-medium text-slate-600 dark:text-slate-300">From</th>
+                    <th className="text-left py-3 px-4 font-medium text-slate-600 dark:text-slate-300">To</th>
+                    <th className="text-right py-3 px-4 font-medium text-slate-600 dark:text-slate-300">Rate</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -284,7 +284,7 @@ export default function CountryPage() {
                     </div>
                     <div>
                       <p className="font-medium text-slate-900 dark:text-white">{deduction.name}</p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">{deduction.description}</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-300">{deduction.description}</p>
                       <p className="text-sm font-medium text-green-600 dark:text-green-400 mt-1">
                         {deduction.type === 'fixed' ? `${country.currencySymbol}${deduction.value.toLocaleString()}` : `${(deduction.value * 100).toFixed(1)}%`}
                         {deduction.maxAmount && ` (max: ${country.currencySymbol}${deduction.maxAmount.toLocaleString()})`}
@@ -306,19 +306,19 @@ export default function CountryPage() {
               <div className="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/30">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">Average Gross Salary</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-300">Average Gross Salary</p>
                     <p className="text-xl font-bold text-slate-900 dark:text-white">
                       €{averageSalaries[country.code].toLocaleString()}/year
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm text-slate-500 dark:text-slate-400">Monthly</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-300">Monthly</p>
                     <p className="text-lg font-semibold text-slate-700 dark:text-slate-300">
                       €{Math.round(averageSalaries[country.code] / 12).toLocaleString()}
                     </p>
                   </div>
                 </div>
-                <p className="text-xs text-slate-400 dark:text-slate-500 mt-2">
+                <p className="text-xs text-slate-400 dark:text-slate-400 mt-2">
                   Source: Eurostat & national statistics (2024 estimates)
                 </p>
               </div>
@@ -348,7 +348,7 @@ export default function CountryPage() {
                     {getTaxAuthority(country.code)!.name}
                   </p>
                   {getTaxAuthority(country.code)!.nameLocal && (
-                    <p className="text-sm text-slate-500 dark:text-slate-400">
+                    <p className="text-sm text-slate-500 dark:text-slate-300">
                       {getTaxAuthority(country.code)!.nameLocal}
                     </p>
                   )}
